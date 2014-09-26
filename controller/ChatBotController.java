@@ -2,26 +2,25 @@ package chatBot.controller;
 
 import javax.swing.JOptionPane;
 
+import chatBot.model.ChatBot;
 import chatBot.view.ChatBotView;
 
 public class ChatBotController
 {
 	private ChatBotView botView;
+	private ChatBot myCrazyChatBot;
 
 	public ChatBotController()
 	{
 		botView = new ChatBotView(this);
+		myCrazyChatBot = new ChatBot("Bob");
 	}
 
 	public void start()
 	{
 		String result = botView.showChatBot("James");
-		
-		if (result.equalsIgnoreCase("exit"));
-		{
-			quit();
-		} 
-		if (result.equalsIgnoreCase("yes"));
+
+		if (myCrazyChatBot.quitChecker(result))
 		{
 			quit();
 		}
@@ -29,7 +28,7 @@ public class ChatBotController
 
 	private void quit()
 	{
-		JOptionPane.showMessageDialog(null, "good bye cruel world");
+		JOptionPane.showMessageDialog(null, "goodbye cruel world");
 		;
 		System.exit(0);
 		;
