@@ -4,6 +4,11 @@ import javax.swing.JOptionPane;
 
 import chatBot.controller.ChatBotController;
 
+/**
+ * 
+ * @author James Peck
+ *@version 1.1 9/26/14
+ */
 public class ChatBotView
 {
 
@@ -14,6 +19,11 @@ public class ChatBotView
 		this.baseController = baseController;
 	}
 
+	/**
+	 * starting dialogue
+	 * @param currentInput user input
+	 * @return chatbot output
+	 */
 	public String showChatBot(String currentInput)
 	{
 		String result = "";

@@ -5,6 +5,11 @@ import javax.swing.JOptionPane;
 import chatBot.model.ChatBot;
 import chatBot.view.ChatBotView;
 
+/**
+ * 
+ * @author James Peck
+ *@version 1.1 9/26/14
+ */
 public class ChatBotController
 {
 	private ChatBotView botView;
