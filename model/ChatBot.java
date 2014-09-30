@@ -23,6 +23,19 @@ public class ChatBot
 		this.name = name;
 		chatCount = 0;
 	}
+	
+	/**
+	 * processes input from the user against the checker methods.  Returns the next output for the view.
+	 * @param currentInput The supplied text.
+	 * @return The processed text based on checker or other methods
+	 */
+	public String processText(String currentInput)
+	{
+		String result= "";
+		
+		
+		return result;
+	}
 
 	/**
 	 *give the chatbot's name
@@ -68,7 +81,7 @@ public class ChatBot
 	{
 		boolean okToQuit = false;
 		
-		if(input.equalsIgnoreCase("Goodbye"))
+		if(input != null && input.equalsIgnoreCase("Goodbye"))
 		{
 			okToQuit = true;
 		}
