@@ -15,12 +15,19 @@ public class ChatBotController
 	private ChatBotView botView;
 	private ChatBot myCrazyChatBot;
 
+	/**
+	 * Constructors are here
+	 */
 	public ChatBotController()
 	{
 		botView = new ChatBotView(this);
 		myCrazyChatBot = new ChatBot("Bob");
 	}
 
+	/**
+	 * Stating Function
+	 * also main function
+	 */
 	public void start()
 	{
 		String result = botView.showChatBot("James");
@@ -33,6 +40,9 @@ public class ChatBotController
 		quit();
 	}
 
+	/**
+	 * Called when the result of the start function returns true
+	 */
 	private void quit()
 	{
 		JOptionPane.showMessageDialog(null, "goodbye cruel world");

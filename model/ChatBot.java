@@ -1,8 +1,10 @@
 package chatBot.model;
 
+import java.util.ArrayList;
+
 public class ChatBot
 {
-	
+	private ArrayList<String> memeList;
 	/**
 	 * name of the chatbot
 	 */
