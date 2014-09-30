@@ -24,11 +24,13 @@ public class ChatBotController
 	public void start()
 	{
 		String result = botView.showChatBot("James");
-
-		if (myCrazyChatBot.quitChecker(result))
+		
+		while(!myCrazyChatBot.quitChecker(result))
 		{
-			quit();
+			result = botView.showChatBot(result);
 		}
+
+		quit();
 	}
 
 	private void quit()
