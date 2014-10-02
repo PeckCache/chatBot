@@ -119,14 +119,6 @@ public class ChatBot
 			}
 		}
 
-		for (int loopCounter = 0; loopCounter < memeList.size(); loopCounter++)
-		{
-			if (input.equalsIgnoreCase(memeList.get(loopCounter)))
-			{
-				isAMeme = true;
-			}
-		}
-
 		return isAMeme;
 	}
 	
@@ -134,7 +126,7 @@ public class ChatBot
 	{
 		String response = "";
 		
-		
+		if (
 		
 		return response;
 	}
