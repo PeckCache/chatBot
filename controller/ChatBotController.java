@@ -1,19 +1,20 @@
 package chatBot.controller;
 
-import javax.swing.JOptionPane;
-
 import chatBot.model.ChatBot;
 import chatBot.view.ChatBotView;
 
 /**
+ * Controller of what is sent where and when to quit.
  * 
  * @author James Peck
- *@version 1.1 9/26/14
+ * @version 1.2 9/26/14
  */
 public class ChatBotController
 {
 	private ChatBotView botView;
 	private ChatBot myCrazyChatBot;
+	private String startMessage;
+	private String quitMessage;
 
 	/**
 	 * Constructors are here
@@ -22,21 +23,27 @@ public class ChatBotController
 	{
 		botView = new ChatBotView(this);
 		myCrazyChatBot = new ChatBot("Bob");
+		startMessage = "Welcome to the " + myCrazyChatBot.getName() + " chatbot. What is your name?";
+		quitMessage = "goodbye cruel user :(";
+	}
+
+	public ChatBot getMyCrazyChatBot()
+	{
+		return myCrazyChatBot;
 	}
 
 	/**
-	 * Stating Function
-	 * also main function
+	 * Stating Function also main function
 	 */
 	public void start()
 	{
-		String result = botView.showChatBot("James");
-		
-		while(!myCrazyChatBot.quitChecker(result))
-		{
-			result = botView.showChatBot(result);
-		}
+		String result = botView.showChatBotDialog(startMessage);
 
+		while (!myCrazyChatBot.quitChecker(result))
+		{
+			result = myCrazyChatBot.processText(result);
+			result = botView.showChatBotDialog(result);
+		}
 		quit();
 	}
 
@@ -45,9 +52,7 @@ public class ChatBotController
 	 */
 	private void quit()
 	{
-		JOptionPane.showMessageDialog(null, "goodbye cruel world");
-		;
+		botView.showChatBotMessage(quitMessage);
 		System.exit(0);
-		;
 	}
 }
