@@ -86,8 +86,8 @@ public class ChatBot
 	public String processText(String currentInput)
 	{
 		String result = "";
-		
-		if(memeChecker(currentInput))
+
+		if (memeChecker(currentInput))
 		{
 			result = "wow, " + currentInput + " is a meme. Wahoo!";
 		}
@@ -121,12 +121,12 @@ public class ChatBot
 
 		return isAMeme;
 	}
-	
+
 	private String stringChecker(String input)
 	{
 		String response = "";
 		
-		if (
+		/*Finish*/
 		
 		return response;
 	}
