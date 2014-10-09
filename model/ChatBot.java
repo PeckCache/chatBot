@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * The chatbot model class. Used for checking and manipulating Strings
  * 
  * @author James Peck
- * @version 1.2 10/2/2014
+ * @version 1.3 10/9/2014
  */
 public class ChatBot
 {
@@ -87,15 +87,46 @@ public class ChatBot
 	{
 		String result = "";
 
-		if (memeChecker(currentInput))
+		int randomPosition = (int) (Math.random() * 3);
+		if (currentInput != null)
 		{
-			result = "wow, " + currentInput + " is a meme. Wahoo!";
-		}
-		else
-		{
-			result = "not a meme, try again";
-		}
+			if (randomPosition == 0)
+			{
+				// stringChecker
+				if (stringChecker(currentInput))
+				{
+					result = "Slow down!!!!";
+				}
+				else
+				{
+					result = "Stop talking so slow!";
+				}
+			}
+			else if (randomPosition == 1)
+			{
+				// content checker
+				if (contentChecker(currentInput))
+				{
+					result = "yep thats my name, don't wear it out.";
+				}
+				else
+				{
+					result = "who are you taking to?";
+				}
+			}
+			else
+			{
 
+				if (memeChecker(currentInput))
+				{
+					result = "wow, " + currentInput + " is a meme. Wahoo!";
+				}
+				else
+				{
+					result = "not a meme, try again";
+				}
+			}
+		}
 		return result;
 	}
 
@@ -122,15 +153,31 @@ public class ChatBot
 		return isAMeme;
 	}
 
-	private String stringChecker(String input)
+	private boolean stringChecker(String input)
+
 	{
-		String response = "";
-		
-		/*Finish*/
-		
+		boolean response = false;
+
+		if (input.length() >= 20)
+		{
+			response = true;
+		}
+
 		return response;
 	}
 
+	private boolean contentChecker(String input)
+	{
+		boolean result = false;
+		
+		if(input.contains(name))
+		{
+			result = true;
+		}
+		
+		return result;
+	}
+	
 	/**
 	 * Checks if quitting is desired and returns it in the form of okToQuit
 	 * 
