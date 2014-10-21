@@ -7,6 +7,10 @@ public class ChatBotFrame extends JFrame
 {
 	private ChatBotPanel basePanel;
 	
+	/**
+	 * 
+	 * @param baseController
+	 */
 	public ChatBotFrame(ChatBotController baseController)
 	{
 		basePanel = new ChatBotPanel(baseController);	
@@ -14,10 +18,13 @@ public class ChatBotFrame extends JFrame
 		setupFrame();
 	}
 	
+	/**
+	 * sets the window size and other components of the window.
+	 */
 	private void setupFrame()
 	{
 		this.setContentPane(basePanel);
-		this.setSize(400, 400);;
+		this.setSize(800, 400);;
 		setVisible(true);
 	}
 

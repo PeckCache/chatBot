@@ -40,7 +40,7 @@ public class ChatBotController
 	 */
 	public void start()
 	{
-		String result = botView.showChatBotDialog(startMessage);
+//		String result = botView.showChatBotDialog(startMessage);
 
 //		while (!myCrazyChatBot.quitChecker(result))
 //		{
