@@ -1,6 +1,7 @@
 package chatBot.controller;
 
 import chatBot.model.ChatBot;
+import chatBot.view.ChatBotFrame;
 import chatBot.view.ChatBotView;
 
 /**
@@ -15,12 +16,14 @@ public class ChatBotController
 	private ChatBot myCrazyChatBot;
 	private String startMessage;
 	private String quitMessage;
+	private ChatBotFrame appFrame;
 
 	/**
 	 * Constructors are here
 	 */
 	public ChatBotController()
 	{
+		appFrame = new ChatBotFrame(this);
 		botView = new ChatBotView(this);
 		myCrazyChatBot = new ChatBot("Bob");
 		startMessage = "Welcome to the " + myCrazyChatBot.getName() + " chatbot. What is your name?";
@@ -39,12 +42,12 @@ public class ChatBotController
 	{
 		String result = botView.showChatBotDialog(startMessage);
 
-		while (!myCrazyChatBot.quitChecker(result))
-		{
-			result = myCrazyChatBot.processText(result);
-			result = botView.showChatBotDialog(result);
-		}
-		quit();
+//		while (!myCrazyChatBot.quitChecker(result))
+//		{
+//			result = myCrazyChatBot.processText(result);
+//			result = botView.showChatBotDialog(result);
+//		}
+//		quit();
 	}
 
 	/**

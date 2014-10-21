@@ -123,7 +123,7 @@ public class ChatBot
 				}
 				else
 				{
-					result = "not a meme, try again";
+					result = "Wait, sorry what?";
 				}
 			}
 		}
