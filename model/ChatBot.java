@@ -133,6 +133,7 @@ public class ChatBot
 	/**
 	 * Increases the amount of chats by one
 	 */
+	@SuppressWarnings("unused")
 	private void updateChatCount()
 	{
 		chatCount++;
