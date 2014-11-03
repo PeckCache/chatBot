@@ -19,6 +19,7 @@ public class ChatBot
 	 * amount of chats that have happened this session
 	 */
 	private int chatCount;
+	private ChatBotUser myUser;
 
 	/**
 	 * creates a chatbot and sets the amount of chats to zero
@@ -32,6 +33,7 @@ public class ChatBot
 		this.name = name;
 		chatCount = 0;
 		fillTheMemeList();
+		myUser = new ChatBotUser();
 	}
 
 	/**
@@ -52,6 +54,16 @@ public class ChatBot
 	public int getchatCount()
 	{
 		return chatCount;
+	}
+
+	public ChatBotUser getMyUser()
+	{
+		return myUser;
+	}
+
+	public void setMyUser(ChatBotUser myUser)
+	{
+		this.myUser = myUser;
 	}
 
 	/**
@@ -87,7 +99,12 @@ public class ChatBot
 	{
 		String result = "";
 
-		int randomPosition = (int) (Math.random() * 3);
+		if(getchatCount() < 7)
+		{
+			
+		}
+		
+		int randomPosition = (int) (Math.random() * 4);
 		if (currentInput != null)
 		{
 			if (randomPosition == 0)
@@ -114,9 +131,8 @@ public class ChatBot
 					result = "who are you taking to?";
 				}
 			}
-			else
+			else if(randomPosition == 2)
 			{
-
 				if (memeChecker(currentInput))
 				{
 					result = "wow, " + currentInput + " is a meme. Wahoo!";
@@ -127,13 +143,13 @@ public class ChatBot
 				}
 			}
 		}
+		updateChatCount();
 		return result;
 	}
 
 	/**
 	 * Increases the amount of chats by one
 	 */
-	@SuppressWarnings("unused")
 	private void updateChatCount()
 	{
 		chatCount++;

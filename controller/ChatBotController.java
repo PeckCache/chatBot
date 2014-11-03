@@ -2,6 +2,7 @@ package chatBot.controller;
 
 import chatBot.model.ChatBot;
 import chatBot.view.ChatBotFrame;
+import chatBot.view.ChatBotPanel;
 import chatBot.view.ChatBotView;
 
 /**
@@ -40,14 +41,21 @@ public class ChatBotController
 	 */
 	public void start()
 	{
-//		String result = botView.showChatBotDialog(startMessage);
-//
-//		while (!myCrazyChatBot.quitChecker(result))
-//		{
-//			result = myCrazyChatBot.processText(result);
-//			result = botView.showChatBotDialog(result);
-//		}
-//		quit();
+		((ChatBotPanel) appFrame.getContentPane()).showMessage(startMessage);
+
+		//ChatBotPanel testPanel = (ChatBotPanel) appFrame.getContentPane();
+		//testPanel.showTextMessage(startMessage);
+	}
+	
+	public String getChatBotDialog(String input)
+	{
+		String result = "";
+		if(myCrazyChatBot.quitChecker(input))
+		{
+			quit();
+		}
+		result = myCrazyChatBot.processText(input);
+		return result;
 	}
 
 	/**

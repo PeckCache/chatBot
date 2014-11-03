@@ -90,10 +90,19 @@ public class ChatBotPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				firstTextField.setText(firstTextField.getText()+ " :)");
+				String currentInput = firstTextField.getText();
+				String result = baseController.getChatBotDialog(currentInput);
+				showMessage(currentInput);
+				showMessage(currentInput);
+				firstTextField.setText("");;
 			}
 		});
 
+	}
+	
+	public void showMessage(String userInput)
+	{
+		chatArea.append("\n" + userInput);
 	}
 
 }
