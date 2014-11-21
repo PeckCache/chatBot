@@ -82,6 +82,7 @@ public class ChatBotPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, chatPane_1, 0, SpringLayout.WEST, firstTextField);
 		baseLayout.putConstraint(SpringLayout.SOUTH, chatPane_1, -22, SpringLayout.SOUTH, firstTextField);
 		baseLayout.putConstraint(SpringLayout.EAST, chatPane_1, 0, SpringLayout.EAST, firstTextField);
+		chatArea.setEditable(false);
 	}
 
 	private void setupListeners()

@@ -33,7 +33,7 @@ public class ChatBotUser
 		return isPerson;
 	}
 
-	public boolean isCanThink()
+	public boolean CanThink()
 	{
 		return canThink;
 	}
