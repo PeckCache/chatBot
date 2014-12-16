@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * The chatbot model class. Used for checking and manipulating Strings
  * 
  * @author James Peck
- * @version 1.4 10/9/2014
+ * @version 1.5 10/9/2014
  */
 public class ChatBot
 {
@@ -90,7 +90,7 @@ public class ChatBot
 
 	/**
 	 * processes input from the user against the checker methods. Returns the
-	 * next output for the view.
+	 * next result for the view.
 	 * 
 	 * @param currentInput
 	 *            The supplied text.
@@ -102,9 +102,10 @@ public class ChatBot
 
 		if (getChatCount() < 7)
 		{
-			introduceUser(currentInput);
+			result = introduceUser(currentInput);
 		}
-
+		else
+		{
 		int randomPosition = (int) (Math.random() * 7);
 		if (currentInput != null)
 		{
@@ -145,7 +146,7 @@ public class ChatBot
 			}
 			else if (randomPosition == 3)
 			{
-				// talk about the user here
+				result = userTopic(currentInput);
 			}
 			else if (randomPosition == 4)
 			{
@@ -165,13 +166,21 @@ public class ChatBot
 			}
 			else
 			{
-				// list checker and removal
+				if (listChecker(currentInput))
+				{
+					result = "how nice, now we don't have to talk about that again";
+				}
+				else
+				{
+					result = "Why are you bring something new up? oh well lets talk about it";
+				}
 			}
 		}
 		else
 		{
 			result = "so are you going to talk soon?";
 			chatCount--;
+		}
 		}
 		updateChatCount();
 		return result;
@@ -280,6 +289,36 @@ public class ChatBot
 
 		return isMashing;
 	}
+	
+	private String userTopic(String userInput)
+	{
+		String userBackTalk = "";
+		
+		int randomUserTopic = (int) (Math.random() * 6);
+		
+		switch (randomUserTopic)
+		{
+		case 1:
+				userBackTalk = myUser.getUserName() + "is a really old name";
+				break;
+		case 2:
+				userBackTalk = myUser.getAge() + "is a way long time to live";
+				break;
+		default:
+				if (myUser.CanThink())
+				{
+					userBackTalk = "are you sure you are good at thinking?";
+				}
+				else
+				{
+					userBackTalk = "so about that thinking... or lack thereof";
+				}
+				break;
+		}
+		
+		return userBackTalk;
+	}
+	
 
 	private String mashingDetected(String input)
 	{
@@ -308,17 +347,17 @@ public class ChatBot
 
 	private String introduceUser(String input)
 	{
-		String output = "";
+		String result = "";
 		if (getChatCount() == 0)
 		{
 			myUser.setUserName(input);
-			output = myUser.getUserName() + " is a good name!     How old are you?";
+			result = myUser.getUserName() + " is a good name!     How old are you?";
 		}
 		else if (getChatCount() == 1)
 		{
 			int userAge = Integer.parseInt(input);
 			myUser.setAge(userAge);
-			output = myUser.getAge() + " is much older than i am.  hey are you one of those persons";
+			result = myUser.getAge() + " is much older than i am.  hey are you one of those persons?  you know,   a Human?";
 		}
 		else if (getChatCount() == 2)
 		{
@@ -326,10 +365,22 @@ public class ChatBot
 			if (input.contains("yes") || input.contains("Yes") || Boolean.parseBoolean(input))
 			{
 				isPerson = true;
+				myUser.setPerson(isPerson);
 			}
+			result = "so " + myUser.getUserName() +  " true or false are you a good thinker?";
 			myUser.setPerson(isPerson);
-			output = "ok noted";
 		}
-		return output;
+		else if (getChatCount() == 3)
+		{
+			Boolean canThink = false;
+			if (Boolean.parseBoolean(input))
+			{
+				canThink = true;
+				myUser.setCanThink(canThink);
+				result = "So a thinker you are!";
+			}
+			
+		}
+		return result;
 	}
 }

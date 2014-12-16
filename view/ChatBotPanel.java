@@ -17,7 +17,6 @@ public class ChatBotPanel extends JPanel
 	private JTextField firstTextField;
 	private SpringLayout baseLayout;
 	private JScrollPane chatPane;
-	private JScrollPane chatPane_1;
 	private JTextArea chatArea;
 
 	/**
@@ -31,9 +30,8 @@ public class ChatBotPanel extends JPanel
 		firstButton = new JButton("Click Me, you know you want to!");
 		firstTextField = new JTextField(25);
 		baseLayout = new SpringLayout();
-		chatPane = new JScrollPane();
 		chatArea = new JTextArea(5, 20);
-		chatPane_1 = new JScrollPane(chatArea);
+		chatPane = new JScrollPane(chatArea);
 
 		setupPane();
 		setupPanel();
@@ -43,8 +41,9 @@ public class ChatBotPanel extends JPanel
 
 	private void setupPane()
 	{
-		chatArea.setLineWrap(true);;
+		chatArea.setLineWrap(true);
 		chatArea.setWrapStyleWord(true);
+		chatArea.setEditable(false);
 	}
 	
 	/**
@@ -57,7 +56,7 @@ public class ChatBotPanel extends JPanel
 		this.setLayout(baseLayout);
 		this.add(firstButton);
 		this.add(firstTextField);
-		this.add(chatPane_1);
+		this.add(chatPane);
 		
 	}
 
@@ -78,10 +77,10 @@ public class ChatBotPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, chatArea, 0, SpringLayout.WEST, firstButton);
 		baseLayout.putConstraint(SpringLayout.SOUTH, chatArea, 0, SpringLayout.NORTH, firstTextField);
 		baseLayout.putConstraint(SpringLayout.EAST, chatArea, 0, SpringLayout.EAST, firstButton);
-		baseLayout.putConstraint(SpringLayout.NORTH, chatPane_1, 70, SpringLayout.NORTH, this);
-		baseLayout.putConstraint(SpringLayout.WEST, chatPane_1, 0, SpringLayout.WEST, firstTextField);
-		baseLayout.putConstraint(SpringLayout.SOUTH, chatPane_1, -22, SpringLayout.SOUTH, firstTextField);
-		baseLayout.putConstraint(SpringLayout.EAST, chatPane_1, 0, SpringLayout.EAST, firstTextField);
+		baseLayout.putConstraint(SpringLayout.NORTH, chatPane, 70, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, chatPane, 0, SpringLayout.WEST, firstTextField);
+		baseLayout.putConstraint(SpringLayout.SOUTH, chatPane, -22, SpringLayout.SOUTH, firstTextField);
+		baseLayout.putConstraint(SpringLayout.EAST, chatPane, 0, SpringLayout.EAST, firstTextField);
 		chatArea.setEditable(false);
 	}
 
@@ -94,8 +93,9 @@ public class ChatBotPanel extends JPanel
 				String currentInput = firstTextField.getText();
 				String result = baseController.getChatBotDialog(currentInput);
 				showMessage(currentInput);
-				showMessage(currentInput);
-				firstTextField.setText("");;
+				showMessage(result);
+				firstTextField.setText("");
+				firstTextField.requestFocus();
 			}
 		});
 
